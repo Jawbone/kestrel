@@ -201,7 +201,7 @@ class PersistentQueue(val name: String, persistencePath: String, @volatile var c
      *   journals are larger than maxJournalSize, checkpoint in preparation for rebuilding the
      *   older files in the background.
      */
-    if ((journal.size >= config.defaultJournalSize.inBytes && queueLength == 0)) {
+    if (((journal.size + journal.archivedSize) >= config.defaultJournalSize.inBytes && queueLength == 0)) {
       log.info("Rewriting journal file for '%s' (qsize=%d)", name, queueSize)
       journal.rewrite(openTransactionIds.map { openTransactions(_) }, queue)
     } else if (journal.size > config.maxMemorySize.inBytes) {
