@@ -1,3 +1,9 @@
+kestrel (2.4.1-2ubuntu1) precise; urgency=low
+
+  * A post initial initial release
+
+ -- Stephan Soileau <ssoileau@jawbone.com>  Tue, 28 Jan 2014 15:43:15 -0800
+
 kestrel (2.4.1-1) unstable; urgency=low
 
   * Initial release.

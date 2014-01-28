@@ -6,7 +6,6 @@ Build-Depends: debhelper (>= 8.0.0),
  cdbs,
  default-jdk,
  devscripts,
- sbt
 Standards-Version: 3.9.3
 Homepage: http://robey.github.com/kestrel/
 #Vcs-Git: git://github.com/ambroff/kestrel.git
