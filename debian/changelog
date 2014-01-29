@@ -1,4 +1,10 @@
-kestrel (2.4.1-2ubuntu1) precise; urgency=low
+kestrel (2.4.2-1~snapshot2ubuntu1) precise; urgency=low
+
+  * Fix the init script
+
+ -- Stephan Soileau <ssoileau@jawbone.com>  Wed, 29 Jan 2014 09:46:47 -0800
+
+kestrel (2.4.2-1~snapshot1) precise; urgency=low
 
   * A post initial initial release
 
