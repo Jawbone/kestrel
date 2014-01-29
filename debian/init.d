@@ -78,11 +78,11 @@ do_start()
 		echo "Only root can start $NAME."
 		exit 1
 	fi
-
+    log_daemon_msg "Starting ${NAME}"
     # Set fd limit and enable core dumps
     ulimit -n $FD_LIMIT
     ulimit -c unlimited
-
+  
     start-stop-daemon --start --quiet \
         --pidfile $PIDFILE \
         --exec $JAVA \
@@ -94,12 +94,13 @@ do_start()
         --chuid $KESTREL_USER:$KESTREL_GROUP \
         --exec $JAVA -- $JAVA_OPTS -jar $JAR_NAME \
         || return 2
-
+    log_daemon_msg "Waiting..."
+    sleep 2
     local tries=0
     while ! is_running; do
         tries=$(expr $tries + 1)
         if [ $tries -gt 10 ]; then
-            return 1
+            return 2
         fi
         sleep 1
     done
@@ -165,7 +166,7 @@ case "$1" in
     esac
     ;;
   status)
-       status_of_proc "$NAME" "$NAME" || true
+       status_of_proc "$NAME" "$NAME" || exit $?
        ;;
   restart|force-reload)
     log_daemon_msg "Restarting $DESC" "$NAME"
